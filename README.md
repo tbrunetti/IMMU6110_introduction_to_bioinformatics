@@ -11,7 +11,7 @@ docker pull tbrunetti/immu6110_introduction_to_bioinformatics:v01.2022
 ```  
 3.  Run the container by running the following line and then opening your web browser to localhost:8787.  Username:rstudio
 ```
-docker run -e -p 8787:8787 PASSWORD=<yourpasswordhere> tbrunetti/immu6110_introduction_to_bioinformatics:v01.2022
+docker run --rm -p 8787:8787 -e PASSWORD=<yourpasswordhere> tbrunetti/immu6110_introduction_to_bioinformatics:v01.2022
 ```
 
 **Singularity**
