@@ -46,7 +46,7 @@ RUN install2.r --error \
 	GGally \
 	matrixStats \
 	BiocManager \
-	misgdbr
+	msigdbr
  
 
 RUN R -e 'require(remotes); install_version("matrixStats", version = "0.61.0", repos = "http://cran.us.r-project.org")'
