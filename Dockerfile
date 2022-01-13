@@ -45,7 +45,9 @@ RUN install2.r --error \
 	fastqcr \
 	GGally \
 	matrixStats \
-	BiocManager 
+	BiocManager \
+	misgdbr
+ 
 
 RUN R -e 'require(remotes); install_version("matrixStats", version = "0.61.0", repos = "http://cran.us.r-project.org")'
 
@@ -82,6 +84,9 @@ RUN R -e 'BiocManager::install("IRanges")'
 RUN R -e 'BiocManager::install("GenomicRanges")'
 RUN R -e 'BiocManager::install("SummarizedExperiment")'
 RUN R -e 'BiocManager::install("DESeq2")'
+RUN R -e 'BiocManager::install("org.Hs.eg.db")'
+RUN R -e 'BiocManager::install("org.Mm.eg.db")'
+RUN R -e 'BiocManager::install("clusterProfiler")'
 
 RUN apt-get update && apt-get -y install git libgdal-dev libnlopt-dev libxcomposite-dev libxcursor-dev libxdamage-dev libxslt1-dev qt5-default mesa-utils libgl1-mesa-glx libgl1-mesa-dev
 
@@ -90,6 +95,7 @@ RUN R -e "install.packages('igraph', dependencies = T)"
 
 RUN R --no-echo -e 'library(remotes); library(SingleCellExperiment); remotes::install_github("satijalab/seurat-wrappers")'
 RUN R --no-echo -e 'library(remotes); remotes::install_github("immunogenomics/harmony")'
+RUN R --no-echo -e 'library(remotes); remotes::install_github("YosefLab/VISION")'
 
 RUN apt-get install -y openssl
 RUN R --no-echo -e 'library(tinytex); tinytex::install_tinytex(repository = "http://mirrors.tuna.tsinghua.edu.cn/CTAN/", version = "latest")'
