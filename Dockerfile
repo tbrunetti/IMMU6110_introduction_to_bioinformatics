@@ -119,7 +119,7 @@ RUN apt -y update && apt -y dist-upgrade
 
 RUN apt-get -y install nano
 
-RUN apt-get install vim
+RUN apt-get -y install vim
 
 RUN apt -y update && apt -y dist-upgrade
 
