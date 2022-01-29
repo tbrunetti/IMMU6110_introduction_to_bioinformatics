@@ -46,7 +46,9 @@ RUN install2.r --error \
 	GGally \
 	matrixStats \
 	BiocManager \
-	msigdbr
+	msigdbr \
+	pheatmap \
+	viridis
  
 
 RUN R -e 'require(remotes); install_version("matrixStats", version = "0.61.0", repos = "http://cran.us.r-project.org")'
@@ -86,12 +88,26 @@ RUN R -e 'BiocManager::install("SummarizedExperiment")'
 RUN R -e 'BiocManager::install("DESeq2")'
 RUN R -e 'BiocManager::install("org.Hs.eg.db")'
 RUN R -e 'BiocManager::install("org.Mm.eg.db")'
-RUN R -e 'BiocManager::install("clusterProfiler")'
+RUN R -e 'BiocManager::install("GO.db")'
+RUN R -e 'BiocManager::install("DO.db")'
+RUN R -e 'library(devtools); devtools::install_github("YuLab-SMU/yulab.utils")'
+RUN R -e 'library(devtools); devtools::install_github("YuLab-SMU/ggtree")'
+RUN R -e 'install.packages("shadowtext")'
+#RUN R -e 'BiocManager::install("enrichplot")'
+#RUN R -e 'BiocManager::install("clusterProfiler")'
+#RUN R -e 'library(devtools); devtools::install_github("YuLab-SMU/enrichplot")'
+#RUN R -e 'library(devtools); devtools::install_github("YuLab-SMU/clusterProfiler")'
+#RUN R -e 'BiocManager::install("clusterProfiler")'
+#RUN R -e 'source("https://bioconductor.org/biocLite.R"); BiocInstaller::biocLite("clusterProfiler")'
 
 RUN apt-get update && apt-get -y install git libgdal-dev libnlopt-dev libxcomposite-dev libxcursor-dev libxdamage-dev libxslt1-dev qt5-default mesa-utils libgl1-mesa-glx libgl1-mesa-dev
 
 RUN apt-get update && apt-get -y install build-essential libglpk40
 RUN R -e "install.packages('igraph', dependencies = T)"
+
+RUN R -e 'BiocManager::install("enrichplot")'
+RUN R -e 'BiocManager::install("clusterProfiler")'
+
 
 RUN R --no-echo -e 'library(remotes); library(SingleCellExperiment); remotes::install_github("satijalab/seurat-wrappers")'
 RUN R --no-echo -e 'library(remotes); remotes::install_github("immunogenomics/harmony")'
