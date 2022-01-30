@@ -137,6 +137,17 @@ RUN apt-get -y install nano
 
 RUN apt-get -y install vim
 
+RUN apt-get -y install libbz2-dev
+RUN R -e 'BiocManager::install("ggtree")'
+RUN R -e 'BiocManager::install("Rhtslib")'
+RUN R -e 'BiocManager::install("GenomicFeatures")'
+RUN R -e 'BiocManager::install("GenomicAlignments")'
+RUN R -e 'BiocManager::install("rtracklayer")'
+RUN R -e 'BiocManager::install("Rsamtools")'
+RUN R -e 'BiocManager::install("ProtGenerics")'
+RUN R -e 'BiocManager::install("ensembldb")'
+RUN R -e 'install.packages("ggnewscale")'
+
 RUN apt -y update && apt -y dist-upgrade
 
 
