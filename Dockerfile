@@ -153,6 +153,7 @@ RUN apt -y update && apt -y dist-upgrade
 RUN R -e 'library(fastqcr); fastqcr::fastqc_install(dest.dir = "/home/rstudio/bin/")'
 
 RUN R -e 'BiocManager::install("batchelor")'
+RUN R -e 'install.packages("metap")'
 
 RUN date > /build-date
 
